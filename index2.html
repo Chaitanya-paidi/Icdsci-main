@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Components</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .bg-image {
+            background-image: url('PSCMR.JPEG'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="h-screen">
+    <div class="flex h-full">
+        <!-- Text Content Component -->
+        <div class="w-1/2 flex items-center justify-center bg-gray-200">
+            <p class="text-xl font-semibold">This is some text content.</p>
+        </div>
+        
+        <!-- Background Image Component -->
+        <div class="w-1/2 bg-image"></div>
+    </div>
+</body>
+</html>

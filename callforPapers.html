@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICDSCI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: rgb(34 197 94 / var(--tw-bg-opacity));
+      }
+      .slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        animation: slideShow 12s infinite;
+      }
+
+      .slide:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .slide:nth-child(2) {
+        animation-delay: 3s;
+      }
+
+      .slide:nth-child(3) {
+        animation-delay: 6s;
+      }
+
+      .slide:nth-child(4) {
+        animation-delay: 9s;
+      }
+
+    
+      @keyframes slideShow {
+        0% { opacity: 1; }
+        33% { opacity: 1; }
+        33.33% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+    
+      .button-container {
+        margin-top: 2.5rem; /* mt-10 */
+        display: flex;
+        justify-content: space-between;
+      }
+    
+      .button-container button {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+        /* padding: 0.75rem 1.5rem; */
+        padding: 15px;
+        font-size: 1.125rem;
+        font-weight: 300;
+        border: none;
+        border-radius: 0.375rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+    
+      .button-container button:hover {
+        background-color: gray;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+    
+      .button-container button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.5);
+      }
+      .tab {
+        overflow: hidden;
+        display: flex;
+        justify-content: space-evenly;
+      }
+    
+      .tab button {
+        background-color: gray;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        margin: 0 5px;
+        transition: 0.3s;
+        font-size: 17px;
+        flex: 1;
+      }
+    
+      .tab button:hover {
+        background-color: #ddd;
+      }
+    
+      .tab button.active {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+      }
+    
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+      }
+    
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: blue;
+      }
+
+      .map-container {
+          height: 100%;
+      }
+    
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    
+      .animate-fadeIn {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+      }
+
+      /* Remove Next & Previous buttons */
+      .prev, .next {
+        display: none;
+      }
+
+      /* Caption text */
+      .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* The dots/bullets/indicators */
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active, .dot:hover {
+        background-color: #717171;
+      }
+
+      /* Fading animation */
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .text {font-size: 11px}
+      }
+
+      .hover-zoom {
+        display: inline-block;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .hover-zoom:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+
+  <body class="bg-white text-black text-justify">
+    <nav class="fixed w-full bg-gray-50 text-black py-3 z-50">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center">
+          <img src="springer.png" alt="Springer Logo" class="h-10 mr-2" />
+          <a href="#" class="text-2xl font-bold">
+            <span class="bg-blue-900 text-white px-2 py-1 rounded">ICDSCI</span> 2025
+          </a>
+        </div>
+        <ul class="hidden md:flex space-x-6">
+          <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+          <li class="relative group">
+            <a href="callforPapers.html" class="flex items-center text-blue-400">
+              Call for Papers
+              <svg class="ml-1 w-4 h-4 fill-current text-black group-hover:text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <ul class="absolute left-0 mt-2 w-48 bg-gray-100 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible">
+              <li><a href="callforPapers.html#conf" class="block px-4 py-2 hover:bg-blue-100">About ICDSCI</a></li>
+              <li><a href="callforPapers.html#dates" class="block px-4 py-2 hover:bg-blue-100">Important Dates</a></li>
+              <li><a href="callforPapers.html#scope" class="block px-4 py-2 hover:bg-blue-100">Scope</a></li>
+              <li><a href="callforPapers.html#conf-tracks" class="block px-4 py-2 hover:bg-blue-100">Conference Tracks</a></li>
+            </ul>
+          </li>
+          <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+          <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+          <li><a href="registration.html" class="hover:text-blue-400">Registration</a></li>
+          <li><a href="sponsors.html" class="hover:text-blue-400">Sponsors</a></li>
+          <li><a href="specialSessions.html" class="hover:text-blue-400">Special Sessions</a></li>
+          <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+        </ul>
+        <button class="md:hidden text-blue-400 focus:outline-none" id="menu-button">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    
+      <!-- Mobile Menu -->
+      <ul class="md:hidden flex flex-col space-y-2 px-4 pt-2 pb-4 bg-gray-100 hidden" id="mobile-menu">
+        <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+        <li>
+          <a href="callforPapers.html" class="flex items-center text-blue-400">
+            Call for Papers
+            <svg class="ml-1 w-4 h-4 fill-current text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <ul class="pl-4 mt-2 space-y-2">
+            <li><a href="callforPapers.html#conf" class="text-blue-400">About ICDSCI</a></li>
+            <li><a href="callforPapers.html#dates" class="text-blue-400">Important Dates</a></li>
+            <li><a href="callforPapers.html#scope" class="text-blue-400">Scope</a></li>
+            <li><a href="callforPapers.html#conf-tracks" class="text-blue-400">Conference Tracks</a></li>
+          </ul>
+        </li>
+        <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+        <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+        <li><a href="registration.html" class="hover:text-blue-400">Registration</a></li>
+        <li><a href="sponsors.html" class="hover:text-blue-400">Sponsors</a></li>
+        <li><a href="specialSessions.html" class="hover:text-blue-400">Special Sessions</a></li>
+        <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+      </ul>
+    </nav>
+    <script>
+      document
+        .getElementById("menu-button")
+        .addEventListener("click", function () {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+    </script>
+
+    <header class="h-[1020px] md:h-full text-center text-white bg-blue-900 relative">
+      <div class="flex flex-col md:flex-row relative z-10">
+        <div class="w-full md:w-1/2 md:px-4 py-25">
+          <div class="w-full md:w-1/2">
+            <div class="slideshow-container md:hidden">
+              <div class="mySlides fade">
+                <div class="numbertext">1 / 4</div>
+                <img src="PSCMR.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">2 / 4</div>
+                <img src="barrage.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">3 / 4</div>
+                <img src="durga.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">4 / 4</div>
+                <iframe
+                  width="100%"
+                  height="200px"
+                  src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+
+              <div style="text-align: center" class="md:hidden">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+              </div>
+            </div>
+          </div>
+
+          <h1 class="text-2xl font-bold t">
+            <img class="md:pt-[100px]" src="autonomous.jpg" alt="" /> <br />
+            International Conference on <br />
+            Data Science and Computational Intelligence (ICDSCI) 2025
+          </h1>
+          <br />
+          <h2 class="text-2xl mb-2">March 20-21, 2025</h2>
+          <h2 class="text-xl font-bold mb-4">Conference Proceedings</h2>
+          <h3 class="text-lg mb-4">
+            ALL ACCEPTED & PRESENTED papers will be published in <br />
+            <b>SCOPUS indexed SPRINGER PROMS</b>.
+          </h3>
+          <div class="flex justify-center space-x-4 mb-4">
+            <img src="springer.png" alt="Springer" class="h-20 w-20" />
+            <img src="bg2.jpg" alt="" class="h-20 w-20" />
+          </div>
+          <p class="mb-2">Submission is now open: Till December 15, 2024.</p>
+          <div class="button-container2"></div>
+          <button
+            class="bg-gray-50 text-black px-4 py-2 rounded hover:bg-gray-300 mb-5"
+          >
+            Submit Your Paper
+          </button>
+        </div>
+        <div class="w-full md:w-1/2 relative overflow-hidden">
+          <div class="slideshow">
+            <div
+              class="slide"
+              style="background-image: url('PSCMR.jpeg'); height: 750px"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url('barrage.jpeg'); height: 750px"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url('durga.jpeg'); height: 750px"
+            ></div>
+            <div class="slide">
+              <iframe
+                width="100%"
+                height="750px"
+                src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {
+            slideIndex = 1;
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex - 1].style.display = "block";
+          dots[slideIndex - 1].className += " active";
+          setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+      </script>
+    </header>
+
+    <div class="mt-1 bg">
+      <marquee behavior="" direction=""
+        >A virtual meeting is available for all registered authors who intend to
+        submit their work but are unable to attend the conference.</marquee
+      >
+    </div>
+
+    <div class="bg-blue-900 text-white text-center p-3">
+      <p class="font-bold text-2xl">ICDSCI 2025 Call for Papers</p>
+    </div>
+
+    <div id="conf"></div>
+    <div
+            class="mt-10 m-2 flex flex-col lg:flex-row justify-between space-y-4 lg:space-y-0 lg:space-x-[50px]"
+          >
+          <a href="callforPapers.html#conf"
+          ><button class="bg-blue-900 p-3 w-full md:w-[200px] text-white rounded-lg">
+                
+                About Conference</button></a
+            >
+            <a href="callforPapers.html#objectives"
+              ><button class="bg-blue-900 p-3 w-full md:w-[110px] text-white rounded-lg">Objectives</button></a
+            >
+            <a href="callforPapers.html#outcomes"><button class="bg-blue-900 p-3 w-full md:w-[110px] text-white rounded-lg">Outcomes</button></a>
+            <a href="callforPapers.html#scope"><button class="bg-blue-900 p-3 w-full md:w-[100px] text-white rounded-lg">Scope</button></a>
+            <a href="callforPapers.html#impact"><button class="bg-blue-900 p-3 w-full md:w-[100px] text-white rounded-lg">Impact</button></a>
+            <a href="specialSessions.html#conference-tracks"><button class="bg-blue-900 p-3 w-full md:w-[180px] text-white rounded-lg">Conference Tracks</button></a>
+            <a href="index.html#indexing"><button class="bg-blue-900 p-3 w-full md:w-[100px] text-white rounded-lg">Indexing</button></a>
+          </div>
+
+    <div class=" text-center text-black p-3 md:p-10" id="objectives">
+      <p class="underline-blue font-bold text-3xl mb-2">
+        <i class="fas fa-info-circle text-blue-700 mr-2"></i>
+        About Conference</p>
+      <p class="text-justify">
+        International Conference on Data Science and Computational Intelligence
+        (ICDSCI) 2025 is a pivotal event that embodies the core elements of the
+        5th Industrial Revolution. The widespread application of data science is
+        revolutionizing products and services, significantly impacting labor
+        markets, economies, and societies globally. The event aims to gather
+        scientific and technical contributions across a broad spectrum of
+        models, tools, technologies, and applications in modern data science.
+        The conference will cover the full range of concepts from theoretical
+        foundations to practical implementations, including case studies,
+        works-in-progress, and conceptual explorations.
+      </p>
+    </div>
+
+    <section class=" text-black p-3 md:p-10">
+      <p class="underline-blue font-bold text-3xl mb-4 text-center" id="outcomes">
+        <i class="fas fa-bullseye text-blue-700 mr-2"></i> <!-- Font Awesome icon -->
+        Objectives
+      </p>
+      
+      <div class="text- mx-auto">
+        <p class="mb-4">The main objectives of ICDSCI-2025 are to:</p>
+        <ul class="list-disc list-inside space-y-2">
+          <li>
+            Facilitate the dissemination of high-quality research findings and
+            innovative ideas in the field of intelligent systems.
+          </li>
+          <li>
+            Provide a forum for academics and industry professionals to share
+            their insights and experiences.
+          </li>
+          <li>
+            Encourage collaboration and networking among researchers,
+            practitioners, and policymakers.
+          </li>
+          <li>
+            Highlight the latest advancements and future directions in machine
+            learning, deep learning, IoT, healthcare technologies, computer
+            vision, and optimization techniques.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class=" text-black p-3 md:p-10" >
+      <p class="underline-blue font-bold text-3xl mb-4 text-center">
+        <i class="fas fa-trophy text-blue-700 mr-2"></i>
+        Outcomes</p>
+      <p>
+        ICDSCI-2025 aims to make significant contributions to the field of Data
+        Science, promote collaboration, and drive innovation and progress in the
+        development and application of advanced technologies
+      </p>
+      <ul class="list-disc list-inside space-y-6 mt-8">
+        <li>
+          <b>Enhanced Knowledge and Skills:</b> <br />
+          Participants will gain a deeper understanding of the latest
+          advancements and trends in data science, big data analytics,
+          computational technologies, and related fields. Attendees will acquire
+          new skills through workshops, tutorials, and training sessions.
+        </li>
+
+        <li>
+          <b>Increased Collaboration: </b> <br />The conference will foster
+          collaborations between academia, industry, and government agencies,
+          leading to joint research projects and innovative solutions to complex
+          problems. Networking opportunities will help participants establish
+          new connections and partnerships.
+        </li>
+
+        <li>
+          <b>Publication of High-Quality Research:</b> <br />
+          The conference will serve as a platform for publishing high-quality
+          research papers, enhancing the body of knowledge in data science and
+          computational technologies. Selected papers will be featured in
+          reputed journals and conference proceedings.
+        </li>
+
+        <li>
+          <b>Showcasing Innovations: </b> <br />The latest innovations,
+          products, and technologies in data science and computational
+          technologies will be showcased, providing attendees with insights into
+          cutting-edge developments and industry trends. Participants will be
+          exposed to successful case studies and real-world implementations.
+        </li>
+
+        <li>
+          <b>Policy and Ethical Insights: </b> <br />Discussions on policy and
+          ethical considerations will provide valuable insights into the
+          responsible and sustainable development of data science and
+          computational technologies. Recommendations for policymakers will be
+          formulated to address the challenges and opportunities in the field.
+        </li>
+
+        <li>
+          <b>Problem-Solving and Thought Leadership: </b> <br />The conference
+          will provide a platform for addressing pressing challenges in the
+          field, leading to new ideas and solutions. Thought leaders and experts
+          will share their perspectives, driving forward-thinking discussions
+          and inspiring future research.
+        </li>
+
+        <li>
+          <b>Support for Early-Career Researchers:</b><br />
+          Opportunities for students and early-career professionals to present
+          their work and receive feedback from established experts. Mentoring
+          and guidance to nurture the next generation of innovators and
+          researchers.
+        </li>
+
+        <li>
+          <b>Enhanced Institutional Reputation:</b> <br />
+          Hosting the conference will enhance the reputation of the organizing
+          institution as a leading entity in the field of data science and
+          computational technologies. The conference will highlight the
+          institution's commitment to fostering innovation and research
+          excellence.
+        </li>
+
+        <li>
+          <b>Comprehensive Proceedings Book:</b> <br />
+          A comprehensive book of abstract proceedings will be published,
+          serving as a valuable resource for researchers and practitioners in
+          the field. The proceedings will document the key findings and
+          discussions from the conference, ensuring long-term impact.
+        </li>
+      </ul>
+    </section>
+
+    <section class=" text-black p-3 md:p-10" id="scope">
+      <p class="underline-blue font-bold text-3xl mb-4 text-center">
+        <i class="fas fa-expand-arrows-alt mr-2 text-blue-700"></i>
+        Scope</p>
+      <p>
+        <b
+          >ICDSCI-2025 will cover a wide range of themes, focusing on the
+          following main areas:</b
+        >
+      </p>
+      <ul class="list-disc list-inside space-y-6 mt-8">
+        <li class="text-left">Mathematical Foundations</li>
+        <li class="text-left">Computational Mathematics</li>
+        <li class="text-left">Data Science Foundations</li>
+        <li class="text-left">
+          Computational Intelligence
+        </li>
+        <li class="text-left">
+          Computational Intelligence Applications
+        </li>
+        <li class="text-left">Applications of Data Science</li>
+        <li class="text-left">Data Science and Al Ethics</li>
+        <li class="text-left">Data Visualization and Interpretation</li>
+        <li class="text-left">Cloud Computing and Virtualization</li>
+        <li class="text-left">Software Engineering Practices</li>
+        <li class="text-left">Emerging Trends</li>
+        <li class="text-left">Industry Applications</li>
+      </ul>
+    </section>
+
+    <div class="w-full hidden md:block">
+      <h2 class="text-3xl text-center font-bold mb-4 underline-blue">
+        <i class="fas fa-calendar-alt text-blue-500 mr-2"></i> 
+        Important Dates / Deadlines
+      </h2>
+      <table
+        class="md:min-w-full bg-white shadow-md rounded-lg overflow-hidden"
+        id="dates"
+      >
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Manuscript submissions open
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-left">
+              September 1, 2024
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Deadline for submissions
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-left">
+              December 15, 2024
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Under review timeline
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-left">
+              December 15, 2024 - January 31, 2025
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Notification of acceptance
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-left">
+              February 05, 2025
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Author registration deadline
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-left">
+              February 06th to March 07th, 2025
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Conference Program scheduled
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-left">
+              March 20th, 21st, 2025
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Final revised manuscript
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-left">
+              April 5th, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <style>
+        table,
+        th,
+        td {
+          border: 1px solid gray;
+        }
+      </style>
+    </div>
+
+    <div class="md:w-[600px] w-full mx-auto md:p-4 md:hidden">
+      <h2 class="text-3xl text-left font-bold mb-4 underline-blue" id="dates">
+        Important Dates / Deadlines
+      </h2>
+
+      <!-- Table 1: Manuscript submissions open -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Manuscript submissions open
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              September 1, 2024
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 2: Deadline for manuscript submissions -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Deadline for manuscript submissions
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              December 15, 2024
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 3: Under review timeline -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Under review timeline
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              December 15, 2024 - January 31, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 4: Notification of acceptance -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Notification of acceptance
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              February 05, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 5: Author registration deadline -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Author registration deadline
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              February 06th to March 07th, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 6: Conference program scheduled -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Conference program scheduled
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              March 20th, 21st, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 7: Final revised manuscript -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Final revised manuscript
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              April 5th, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <section class=" text-black p-3 md:p-10" id="impact">
+      <p class="underline-blue font-bold text-3xl mb-4 text-center">
+        <i class="fas fa-wave-square mr-2 text-blue-700"></i>
+        Anticipated Impacts
+      </p>
+      <p>
+        The International Conference on Data Science and Computational
+        Intelligence (ICDSCI) 2025 is poised to make a significant impact on the
+        field of data science and computational intelligence and beyond. ICDSCI
+        2025 is expected to have a profound and lasting impact on the
+        advancement of data science and computational intelligence, fostering
+        collaboration, innovation, and ethical development in this rapidly
+        evolving field. The anticipated impacts include:
+      </p>
+      <ul class="list-disc list-inside space-y-6 mt-8">
+        <li>
+          <b>Advancement of Research and Innovation:</b> <br />
+          ICDSCI 2025 will catalyze the development of new research ideas and
+          innovative solutions by providing a platform for the dissemination of
+          cutting-edge research and technological advancements. The conference
+          will drive forward the frontiers of knowledge in data analytics,
+          machine learning, big data, computational modeling, healthcare
+          applications, and optimization techniques.
+        </li>
+
+        <li>
+          <b>Strengthened Academic-Industry Collaboration:</b> <br />
+          The conference will foster stronger ties between academia and
+          industry, facilitating the translation of research into practical
+          applications. By bringing together researchers, practitioners, and
+          industry experts, ICDSCI 2025 will encourage collaborative projects
+          and partnerships that address real-world challenges and promote
+          technological advancements.
+        </li>
+
+        <li>
+          <b>Global Networking and Collaboration:</b> <br />
+          ICDSCI 2025 will serve as a global networking hub, connecting
+          professionals from diverse backgrounds and regions. This will enhance
+          international collaboration and exchange of ideas, leading to a more
+          integrated and collaborative global research community in the field of
+          data science and computational intelligence.
+        </li>
+
+        <li>
+          <b>Enhanced Educational Opportunities:</b> <br />
+          Through workshops, tutorials, and training sessions, ICDSCI 2025 will
+          provide valuable educational opportunities for participants. Students,
+          early-career researchers, and professionals will benefit from the
+          knowledge and expertise shared by leading experts, contributing to
+          their professional growth and skill development.
+        </li>
+
+        <li>
+          <b>Policy and Ethical Guidance:</b> <br />
+          The conference will address critical policy and ethical issues related
+          to the adoption and development of data science and computational
+          technologies. By highlighting these considerations, ICDSCI 2025 will
+          contribute to the formulation of guidelines and policies that ensure
+          the responsible and ethical use of advanced technologies.
+        </li>
+
+        <li>
+          <b
+            >Increased Visibility and Prestige for the Organizing
+            Institution:</b
+          >
+          <br />
+          Hosting ICDSCI 2025 will elevate the profile and prestige of the
+          organizing institution as a leading entity in the field of data
+          science and computational intelligence. The conference will showcase
+          the institution's commitment to academic excellence, research, and
+          innovation, attracting future collaborations and partnerships.
+        </li>
+
+        <li>
+          <b>Long-Term Knowledge Repository:</b> <br />
+          The publication of the conference proceedings will create a long-term
+          repository of knowledge, documenting the latest research findings and
+          discussions. This will serve as a valuable resource for researchers,
+          practitioners, and policymakers, ensuring the sustained impact of
+          ICDSCI 2025 on the field.
+        </li>
+
+        <li>
+          <b>Inspiration for Future Research:</b> <br />
+          The insights and discussions at ICDSCI 2025 will inspire future
+          research directions and projects. By highlighting emerging trends and
+          challenges, the conference will set the agenda for future
+          investigations and developments in data science and computational
+          intelligence.
+        </li>
+      </ul>
+    </section>
+    <section class="bg-blue-200 py-12 text-black">
+      <div class="container mx-auto text-center mb-8">
+        <h1 class="text-4xl font-bold underline-blue" id="conference-tracks">
+          <i class="fas fa-stream mr-2 text-blue-700"></i> 
+          Conference Tracks</h1>
+      </div>
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6" id="conference-tracks">
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 text-left underline-green">
+            Mathematical Foundations:
+          </h2>
+          <p>- Fuzzy Logics</p>
+          <p>- Concepts and principles of fuzzy set theory</p>
+          <p>- Fuzzy inference systems</p>
+          <p class="text-left">- Applications of fuzzy logic in decision-making and control</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 text-left underline-green">
+            Computational Mathematics:
+          </h2>
+          <p>- Numerical Analysis</p>
+          <p>- Optimization</p>
+          <p>- Computational Algebra</p>
+          <p>- Mathematical Modeling</p>
+          <p>- Computational Statistics</p>
+          <p>- Graph Theory and Network Analysis</p>
+          <p>- Differential Equation</p>
+          <p>- Computational Geometry</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 text-left underline-green">
+            Data Science Foundations:
+          </h2>
+          <p>- Statistical learning theory</p>
+          <p>- Data mining techniques</p>
+          <p>- Big data analytics</p>
+          <p class="text-left">- Machine learning algorithms</p>
+          <p>- Deep learning techniques</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 underline-green">
+            Computational Intelligence:
+          </h2>
+          <p>- Evolutionary computation</p>
+          <p>- Neural networks</p>
+          <p>- Fuzzy systems</p>
+          <p>- Swarm intelligence</p>
+          <p>- Genetic algorithms</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl text-left font-bold mb-2 underline-green">
+            Applications of Data Science:
+          </h2>
+          <p class="text-left">- Natural language processing</p>
+          <p>- Image and video analysis</p>
+          <p>- Bioinformatics</p>
+          <p>- Social media analytics</p>
+          <p>- Recommender systems</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 underline-green text-left">
+            Computational intelligence applications:
+          </h2>
+          <p>- Robotics and autonomous systems</p>
+          <p>- Decision support systems</p>
+          <p>- Optimization problems</p>
+          <p class="text-left">- Computational neuroscience</p>
+          <p>- Intelligent control</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 underline-green">
+            Data Science and Al Ethics:
+          </h2>
+          <p>- Privacy and security in data analytics</p>
+          <p class="text-left">- Fairness and transparency in Al</p>
+          <p>- Ethical considerations in big data research</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl text-left font-bold mb-2 underline-green">
+            Data Visualization and Interpretation:
+          </h2>
+          <p>- Visual analytics</p>
+          <p class="text-left">- Interactive data exploration</p>
+          <p>- Interpretability of machine learning models</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 underline-green text-left">
+            Cloud Computing and Virtualization:
+          </h2>
+          <p>- Cloud service models</p>
+          <p class="text-left">- Containerization technologies</p>
+          <p>- Serverless computing and functions-as-a-service</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 underline-green text-left">
+            Software Engineering Practices:
+          </h2>
+          <p class="text-left">- Agile methodologies and DevOps practices</p>
+          <p class="text-left">- Software testing and quality assurance</p>
+          <p>- Software architecture and design pattems</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 underline-green">
+            Emerging Trends:
+          </h2>
+          <p>- Quantum.computing and data science</p>
+          <p>- Edge computing for data analytics</p>
+          <p>- Blockchain and Al</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 underline-green">
+            Industry Applications:
+          </h2>
+          <p>- Financial analytics</p>
+          <p>- Heathcare informatics</p>
+          <p>- Industrial IoT appications</p>
+          <p class="text-left">- Smart c and arbian analytics</p>
+        </div>
+      </div>
+    </section>
+    <footer class="bg-blue-900 py-6 text-center text-white">
+      <p>
+        &copy; 2025 International Conference on Data Science and Computational
+        Intelligence. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>
