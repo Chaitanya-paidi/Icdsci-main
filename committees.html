@@ -301,6 +301,14 @@
       <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
     </ul>
   </nav>
+
+  <script>
+    document
+      .getElementById("menu-button")
+      .addEventListener("click", function () {
+        document.getElementById("mobile-menu").classList.toggle("hidden");
+      });
+  </script>
   
   <header class="h-[1020px] md:h-full text-center text-white bg-blue-900 relative">
     <div class="flex flex-col md:flex-row relative z-10">
